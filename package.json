@@ -1,0 +1,32 @@
+{
+	"name": "brazilian-stremio-addon",
+	"version": "0.3.0",
+	"description": "Stremio addon for dubbed movies and series in portuguese (brazil).",
+	"scripts": {
+		"buildStart": "tsc && node dist/src/index.js",
+		"start": "ts-node src/index.js",
+		"test": "jest",
+		"build": "tsc",
+		"coverage": "jest --coverage"
+	},
+	"dependencies": {
+		"async": "^3.2.0",
+		"axios": "^0.21.1",
+		"magnet-uri": "^6.1.1",
+		"needle": "^2.6.0",
+		"body-parser": "^1.19.0",
+		"mongoose": "^5.9.10",
+		"stremio-addon-sdk": "^1.6.5"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.11",
+		"@types/jest": "^26.0.23",
+		"@types/stremio-addon-sdk": "^1.6.1",
+		"jest": "^26.6.3",
+		"jest-circus": "^26.6.3",
+		"nodemon": "^2.0.7",
+		"ts-jest": "^26.5.6",
+		"ts-node": "^9.1.1",
+		"typescript": "^4.2.4"
+	}
+}

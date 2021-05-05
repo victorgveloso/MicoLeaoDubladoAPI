@@ -1,0 +1,7 @@
+{
+    "type": "movie",
+    "id": "BrazilianCatalog",
+    "name": "Filmes Dublados (ptbr)",
+    "genres": ["Ação", "Animação", "Aventura", "Clássico", "Comédia", "Documentário", "Drama", "Fantasia", "Ficção", "Faroeste", "Guerra", "Músicas", "Nacional", "Policial", "Romance", "Suspense", "Terror"],
+    "extraSupported": ["search", "genre"]
+}
