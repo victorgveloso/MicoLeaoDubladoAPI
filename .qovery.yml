@@ -1,17 +1,15 @@
 ---
 application:
-  name: "torrentaddonapi"
+  name: "api"
   project: "MicoLeaoDublado"
   organization: "QoveryCommunity"
-  publicly_accessible: true
-  port: 3000
 databases:
 - type: "MONGODB"
   name: "mongo"
   version: "4.4"
 routers:
-- name: "main-torrentaddonapi"
+- name: "main-api"
   routes:
-  - application_name: "torrentaddonapi"
+  - application_name: "api"
     paths:
     - "/*"
