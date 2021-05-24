@@ -1,4 +1,4 @@
-const MetaDAO = require('../../../src/persistence/controllers/meta-dao')
+const MetaDAO = require('../../../src/persistence/controllers/meta-dao').default
 var metaDAO;
 
 var meta = {

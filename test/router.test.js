@@ -3,10 +3,10 @@ const timeout = require('./timeout');
 const {
     upsertMovieData
 } = require('../src/router');
-const MetaDAO = require('../src/persistence/controllers/meta-dao');
-const StreamDAO = require('../src/persistence/controllers/stream-dao');
-const Meta = require('../src/persistence/models/meta');
-const Stream = require('../src/persistence/models/stream');
+const MetaDAO = require('../src/persistence/controllers/meta-dao').default;
+const StreamDAO = require('../src/persistence/controllers/stream-dao').default;
+const Meta = require('../src/persistence/models/meta').default;
+const Stream = require('../src/persistence/models/stream').default;
 const fs = require('fs');
 const path = require('path');
 const {

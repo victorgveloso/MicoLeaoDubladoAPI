@@ -1,7 +1,21 @@
-var mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import { Schema, model } from 'mongoose';
 
-const MetaSchema = new Schema({
+export interface IMeta {
+    id: string
+    type: string
+    name: string
+    genres: string[]
+    poster: string
+    background: string
+    logo: string
+    description: string
+    releaseInfo: string
+    imdbRating: number
+    runtime: string
+    catalogs: string[]
+}
+
+export const MetaSchema: Schema = new Schema({
     id: {
         type: 'String',
         required: true
@@ -52,7 +66,6 @@ const MetaSchema = new Schema({
     }
 });
 
-const Meta = mongoose.model('Meta', MetaSchema);
+const Meta = model('Meta', MetaSchema);
 
-module.exports = Meta;
-module.exports.MetaSchema = MetaSchema;
+export default Meta;

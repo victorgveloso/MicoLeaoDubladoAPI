@@ -1,24 +1,24 @@
-const Meta = require('../models/meta');
-class MetaDAO {
+import Meta, { IMeta } from '../models/meta';
+export default class MetaDAO {
     async getAll(skip=0, limit=100) {
         return Meta.find().skip(skip).limit(limit).exec();
     }
-    async getByGenre(catalogId, genre, skip=0, limit=100) {
+    async getByGenre(catalogId: string, genre: string, skip=0, limit=100) {
         return Meta.find({ catalogs: catalogId, genres: genre }).skip(skip).limit(limit).exec();
     }
-    async getByCatalogId(catalogId, skip=0, limit=100) {
+    async getByCatalogId(catalogId: string, skip=0, limit=100) {
         return Meta.find({ catalogs: catalogId }).skip(skip).limit(limit).exec();
     }
-    async getByName(name, skip=0, limit=100) {
+    async getByName(name: string, skip=0, limit=100) {
         return Meta.find({ name: { $regex: name, $options: 'i' } }).skip(skip).limit(limit).exec();
     }
-    async getById(id) {
+    async getById(id: string) {
         return Meta.findOne({ id: id }).exec();
     }
-    async add(meta) {
+    async add(meta: IMeta) {
         return (new Meta(meta)).save();
     }
-    async addIfAbsent(meta) {
+    async addIfAbsent(meta: IMeta) {
         let exists = await this.getById(meta.id);
         if (exists != null) {
             return exists;
@@ -27,10 +27,10 @@ class MetaDAO {
             return this.add(meta);
         }
     }
-    async update(meta) {
+    async update(meta: IMeta) {
         return Meta.update({ id: meta.id }, meta).exec();
     }
-    async upsert(meta) {
+    async upsert(meta: IMeta) {
         let exists = await this.getById(meta.id);
         if (exists != null) {
             return this.update(meta);
@@ -40,5 +40,3 @@ class MetaDAO {
         }
     }
 }
-
-module.exports = MetaDAO;

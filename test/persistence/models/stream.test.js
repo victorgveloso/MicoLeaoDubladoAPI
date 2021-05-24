@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-const Stream = require('../../../src/persistence/models/stream');
+const Stream = require('../../../src/persistence/models/stream').default;
+const streamStub = require('../../../src/persistence/models/stub/stream.json');
 const {
     connect
 } = require('../../../src/config');
@@ -16,20 +17,8 @@ afterEach(async () => {
     await Stream.deleteMany({}).exec();
 });
 
-const StreamStub = () => {
-    return {
-        metaId: "tt18374950",
-        title: "Star Wars: Episode IX – The Rise of Skywalker",
-        type: "movie",
-        infoHash: "e606fef7ee4bba72bde96e5c8767702b4fef0f06",
-        sources: [
-            "dhte606fef7ee4bba72bde96e5c8767702b4fef0f06"
-        ]
-    };
-};
-
 test('Test model(e.g. stream) creation', () => {
-    var stream = new Stream(StreamStub());
+    var stream = new Stream(streamStub);
 
     var sources = Array.from(stream.sources);
 
@@ -40,13 +29,13 @@ test('Test model(e.g. stream) creation', () => {
             sources,
             type: stream.type
         })
-        .toEqual(StreamStub());
+        .toEqual(streamStub);
 });
 
 
 
 it('Should return simple object when saved', async () => {
-    var stream = new Stream(StreamStub());
+    var stream = new Stream(streamStub);
 
     const output = await stream.save();
 
@@ -55,12 +44,12 @@ it('Should return simple object when saved', async () => {
 });
 
 it('Should be found after saving', async () => {
-    var s = new Stream(StreamStub());
+    var s = new Stream(streamStub);
 
     var saved = await s.save();
 
     var found = await Stream.findOne({
-        infoHash: StreamStub().infoHash
+        infoHash: streamStub.infoHash
     }).exec();
 
     expect(found._id).toEqual(saved._id);

@@ -1,23 +1,23 @@
-const Stream = require('../models/stream');
+import Stream, { IStream } from '../models/stream';
 
-class StreamDao {
-    async getAll() {
+export default class StreamDao {
+    async getAll(): Promise<IStream[]> {
         return Stream.find().exec();
     }
-    async getByMetaId(metaId) {
+    async getByMetaId(metaId: string): Promise<IStream[]> {
         return Stream.find({
             metaId
         }).exec();
     }
     
-    async getByMetaIdAndInfoHash(metaId, infoHash) {
+    async getByMetaIdAndInfoHash(metaId: string, infoHash: string): Promise<IStream | null> {
         return Stream.findOne({
             metaId,
             infoHash
         }).exec();
     }
 
-    async addIfAbsent(stream) {
+    async addIfAbsent(stream: IStream): Promise<IStream> {
         let exists = await this.getByMetaIdAndInfoHash(stream.metaId, stream.infoHash);
         if (exists != null) {
             return exists;
@@ -27,5 +27,3 @@ class StreamDao {
         
     }
 }
-
-module.exports = StreamDao;

@@ -1,8 +1,14 @@
-var mongoose = require('mongoose');
+import { Schema, model, Model } from 'mongoose';
 
-const Schema = mongoose.Schema;
+export interface ICatalog {
+    id: string
+    type: string
+    name: string
+    genres: string[]
+    extraSupported: string[]
+}
 
-const CatalogSchema = new Schema({
+export const CatalogSchema: Schema = new Schema({
     id: {
         type: 'String',
         required: true
@@ -24,7 +30,6 @@ const CatalogSchema = new Schema({
         required: false
     }
 });
-const Catalog = mongoose.model('Catalog', CatalogSchema);
+const Catalog: Model<ICatalog> = model<ICatalog>('Catalog', CatalogSchema);
 
-module.exports = Catalog;
-module.exports.CatalogSchema = CatalogSchema;
+export default Catalog;

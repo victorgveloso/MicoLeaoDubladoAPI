@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 const MovieAssembler = require('../../../src/persistence/controllers/movie-assembler');
-const MetaDao = require('../../../src/persistence/controllers/meta-dao');
+const MetaDao = require('../../../src/persistence/controllers/meta-dao').default;
 const metaDao = new MetaDao();
-const StreamDao = require('../../../src/persistence/controllers/stream-dao');
+const StreamDao = require('../../../src/persistence/controllers/stream-dao').default;
 const streamDao = new StreamDao();
-const Stream = require('../../../src/persistence/models/stream');
-const Meta = require('../../../src/persistence/models/meta');
+const Stream = require('../../../src/persistence/models/stream').default;
+const Meta = require('../../../src/persistence/models/meta').default;
 const {
     connect
 } = require('../../../src/config');

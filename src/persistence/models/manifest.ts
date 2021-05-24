@@ -1,9 +1,18 @@
-var mongoose = require('mongoose');
-const { CatalogSchema } = require("./catalog");
+import { Schema, model, Model } from 'mongoose';
+import { CatalogSchema, ICatalog } from "./catalog";
 
-const Schema = mongoose.Schema;
+export interface IManifest {
+    id: string
+    name: string
+    version: string
+    description: string
+    resources: string[]
+    types: string[]
+    catalogs: ICatalog[]
+    idPrefixes: string[]
+}
 
-const ManifestSchema = new Schema({
+export const ManifestSchema: Schema = new Schema({
     id: {
         type: 'String',
         required: true,
@@ -39,7 +48,6 @@ const ManifestSchema = new Schema({
     },
 });
 
-const Manifest = mongoose.model('Manifest', ManifestSchema);
+const Manifest: Model<IManifest> = model<IManifest>('Manifest', ManifestSchema);
 
-module.exports = Manifest;
-module.exports.ManifestSchema = ManifestSchema;
+export default Manifest;

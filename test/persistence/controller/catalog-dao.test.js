@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-const CatalogDAO = require('../../../src/persistence/controllers/catalog-dao');
-const Catalog = require('../../../src/persistence/models/catalog');
+const CatalogDAO = require('../../../src/persistence/controllers/catalog-dao').default;
+const Catalog = require('../../../src/persistence/models/catalog').default;
 const catalogStub = require('../../../src/persistence/models/stub/catalog.json');
 const {
     connect

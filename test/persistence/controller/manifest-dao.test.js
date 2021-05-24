@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
-const CatalogDAO = require('../../../src/persistence/controllers/catalog-dao');
-const ManifestDAO = require('../../../src/persistence/controllers/manifest-dao');
-const Manifest = require('../../../src/persistence/models/manifest');
-const Catalog = require('../../../src/persistence/models/catalog');
+const CatalogDAO = require('../../../src/persistence/controllers/catalog-dao').default;
+const ManifestDAO = require('../../../src/persistence/controllers/manifest-dao').default;
+const Manifest = require('../../../src/persistence/models/manifest').default;
+const Catalog = require('../../../src/persistence/models/catalog').default;
 const catalogStub = require('../../../src/persistence/models/stub/catalog.json');
 const defaultManifest = require("../../../src/persistence/models/stub/manifest.json");
 const {
