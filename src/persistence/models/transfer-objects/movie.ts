@@ -31,7 +31,7 @@ export class MovieMagnet {
         this.magnet = magnet;
     }
 }
-export default class Movie {
+export default class MovieDTO {
     meta: MovieMeta
     magnets: MovieMagnet[]
 

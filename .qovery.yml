@@ -3,6 +3,8 @@ application:
   name: "api"
   project: "MicoLeaoDublado"
   organization: "QoveryCommunity"
+  publicly_accessible: true
+  port: 3000
 databases:
 - type: "MONGODB"
   name: "mongo"
