@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-const MovieAssembler = require('../../../src/persistence/controllers/movie-assembler');
+const MovieAssembler = require('../../../src/persistence/controllers/movie-assembler').default;
 const MetaDao = require('../../../src/persistence/controllers/meta-dao').default;
 const metaDao = new MetaDao();
 const StreamDao = require('../../../src/persistence/controllers/stream-dao').default;
