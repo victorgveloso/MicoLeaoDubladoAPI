@@ -6,6 +6,9 @@ export interface IStream extends Document {
     title: string
     infoHash: string
     sources: string[]
+    fileIdx?: number
+    episode?: number
+    season?: number
 }
 
 export const StreamSchema: Schema = new Schema({
@@ -28,8 +31,27 @@ export const StreamSchema: Schema = new Schema({
     sources: {
         type: ['String'],
         required: false
+    },
+    fileIdx: {
+        type: 'Number',
+        required: false
+    },
+    episode: {
+        type: 'Number',
+        required: false
+    },
+    season: {
+        type: 'Number',
+        required: false
     }
 });
+
+StreamSchema.virtual("streamId").get(function (this: IStream) {
+    if (this.type === "series") {
+        return `${this.metaId}:${this.episode}:${this.season}`
+    }
+    return this.metaId;
+})
 
 const Stream: Model<IStream> = mongoose.model<IStream>('Stream', StreamSchema);
 
