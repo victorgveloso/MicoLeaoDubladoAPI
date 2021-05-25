@@ -1,22 +1,27 @@
 import { getRouter as gerDefaultRouter } from 'stremio-addon-sdk';
 import bodyParser from 'body-parser';
-import disassemble from './persistence/controllers/movie-assembler';
+import disassembleMovie from './persistence/controllers/movie-assembler';
+import disassembleSeries from './persistence/controllers/series-assembler';
 import MetaDAO from './persistence/controllers/meta-dao';
 import StreamDAO from './persistence/controllers/stream-dao';
 import { AddonInterface } from './persistence/models/stremio';
+import MovieDTO, { MovieMagnet } from './persistence/models/transfer-objects/movie';
+import { IStream } from './persistence/models/stream';
+import SeriesDTO, { SeriesMagnet } from './persistence/models/transfer-objects/series';
+import ContentDTO, { BaseMagnet } from './persistence/models/transfer-objects/content';
 
 
-export async function upsertMovieData(movie: any) {
+export async function upsertContentData <T extends BaseMagnet> (content: ContentDTO<T>, fn: (c: ContentDTO<T>)=>any) {
     let metaDao = new MetaDAO();
     let streamDao = new StreamDAO();
 
     const {
         meta,
         streams
-    } = disassemble(movie);
+    } = fn(content);
 
     await metaDao.addIfAbsent(meta);
-    await streams.map((m: any) => {
+    await streams.map((m: IStream) => {
         streamDao.addIfAbsent(m)
     });
 }
@@ -35,10 +40,17 @@ export function getRouter(addonInterface: AddonInterface) {
 
     router.post('/movie', (req: any, res: any) => {
 
-        upsertMovieData(req.body)
+        upsertContentData<MovieMagnet>(req.body as MovieDTO, disassembleMovie)
             .then(() => res.send(200))
             .catch(err => res.send(err))
     });
+
+    router.post('/series', (req: any, res: any) => {
+
+        upsertContentData<SeriesMagnet>(req.body as SeriesDTO, disassembleSeries)
+            .then(() => res.send(200))
+            .catch(err => res.send(err))
+    })
 
     return router;
 }
