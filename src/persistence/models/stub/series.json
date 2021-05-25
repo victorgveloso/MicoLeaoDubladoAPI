@@ -16,7 +16,8 @@
     "magnets": [{
         "episode": 1,
         "season": 1,
-        "title": "",
-        "magnet": ""
+        "fileIdx": 1,
+        "title": "1080p",
+        "magnet": "magnet:?xt=urn:btih:82360b56a95e06ff5312dde5aa7be7ecb417b466"
     }]
 }

@@ -1,11 +1,8 @@
-import { IMeta } from "../meta"
-export interface SeriesMagnet {
-    title: string
-    magnet: string
+import ContentDTO, { BaseMagnet } from "./content";
+export interface SeriesMagnet extends BaseMagnet {
     episode: number
     season: number
+    fileIdx: number
 }
-export default interface SeriesDTO {
-    meta: IMeta
-    magnets: SeriesMagnet[]
-}
+type SeriesDTO = ContentDTO<SeriesMagnet>;
+export default SeriesDTO;

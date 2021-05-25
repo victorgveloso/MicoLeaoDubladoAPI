@@ -1,9 +1,5 @@
-import { IMeta } from "../meta"
-export interface MovieMagnet {
-    title: string
-    magnet: string
-}
-export default interface MovieDTO {
-    meta: IMeta
-    magnets: MovieMagnet[]
-}
+import ContentDTO, { BaseMagnet } from "./content";
+
+export interface MovieMagnet extends BaseMagnet {}
+export type MovieDTO = ContentDTO<MovieMagnet>;
+export default MovieDTO;
