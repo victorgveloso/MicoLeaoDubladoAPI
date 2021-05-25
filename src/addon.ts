@@ -1,48 +1,57 @@
 import MetaDAO from './persistence/controllers/meta-dao';
 import StreamDAO from './persistence/controllers/stream-dao';
+import { IMeta } from './persistence/models/meta';
+import { IStream } from './persistence/models/stream';
+import { Args } from './persistence/models/stremio';
 
-export function createCatalogHandler(args: any) {
-    let metaDao = new MetaDAO()
-    const skip = parseInt(args.extra.skip) || 0
-    const limit = 100
+export function createCatalogHandler(args: Args): {metas: IMeta[]} {
+    let metaDao = new MetaDAO();
+    const skip = args.extra.skip || 0;
+    const limit = 100;
+    let result: {metas: IMeta[]} = {metas: []};
     if (args.extra.search) {
-        return metaDao.getByName(args.extra.search, skip, limit).then((metas) => {
-            return {
+        metaDao.getByName(args.extra.search, skip, limit).then((metas) => {
+            result = {
                 metas
-            }
+            };
         }).catch((error) => {
-            throw new Error(`Catalog Handler ERROR: ${error}`)
-        })
+            throw new Error(`Catalog Handler ERROR: ${error}`);
+        });
     } else if (args.type == 'movie') {
         if (args.extra.genre) {
-            return metaDao.getByGenre(args.id, args.extra.genre, skip, limit).then((metas) => {
-                return {
+            metaDao.getByGenre(args.id, args.extra.genre, skip, limit).then((metas) => {
+                result = {
                     metas
-                }
+                };
             }).catch((error) => {
-                throw new Error(`Catalog Handler ERROR: ${error}`)
-            })
+                throw new Error(`Catalog Handler ERROR: ${error}`);
+            });
         }
-        return metaDao.getByCatalogId(args.id, skip, limit).then((metas) => {
-            return {
-                metas
-            }
-        }).catch((error) => {
-            throw new Error(`Catalog Handler ERROR: ${error}`)
-        })
+        else {
+            metaDao.getByCatalogId(args.id, skip, limit).then((metas) => {
+                result = {
+                    metas
+                };
+            }).catch((error) => {
+                throw new Error(`Catalog Handler ERROR: ${error}`);
+            });
+        }
     }
+    return result;
 }
 
-export function createStreamHandler(args: any) {
+export function createStreamHandler(args: Args) {
     let streamDao = new StreamDAO();
-    return streamDao.getByMetaId(args.id).then((streams) => {
-        return {
+    let result : {streams: IStream[]} = {streams: []};
+    streamDao.getByMetaId(args.id).then((streams) => {
+        result = {
             streams
         };
     }).catch((error) => {
         console.error(`Stream Handler ERROR: ${error}`);
-        return {
+        result = {
             streams: []
         };
     });
+    return result;
 }

@@ -6,15 +6,26 @@ import { getRouter as getDefaultRouter } from 'stremio-addon-sdk';
 let landingTemplate = require('stremio-addon-sdk/src/landingTemplate');
 let opn = require('opn');
 import { AddressInfo } from "net";
-
-interface AddonInterface {
-    manifest: any;
-    get: (args: { resource: any } & any) => Promise<any>;
-}
-
+import { AddonInterface } from './persistence/models/stremio';
+import { Server } from 'http';
 export class HttpServer {
 	addonInterface: AddonInterface
-	opts: any
+	opts: {
+        port?: number;
+        /**
+         * (in seconds) cacheMaxAge means the Cache-Control header being set to max-age=$cacheMaxAge
+         */
+        cacheMaxAge?: number;
+		cache?: number;
+        /**
+         * Static directory to serve.
+         */
+        static?: string;
+		/**
+		 * Custom router param. If undefined stremio's default router is used
+		 */
+		getRouter?: (o: AddonInterface) => any;
+    }
 	app: express.Express
 	constructor(addonInterface: AddonInterface, opts = {}) {
 		this.addonInterface = addonInterface;
@@ -22,7 +33,7 @@ export class HttpServer {
 		this.app = this.createCachedServer();
 	}
 
-	serve() {
+	serve(): Promise<{url: string, server: Server}> {
 		this.serveAPI();
 		this.serveStatic();
 		this.serveLandingPage();
@@ -36,7 +47,7 @@ export class HttpServer {
 	
 		const cacheMaxAge = this.opts.cacheMaxAge || this.opts.cache;
 	
-		if (cacheMaxAge > 365 * 24 * 60 * 60) {
+		if (cacheMaxAge && cacheMaxAge > 365 * 24 * 60 * 60) {
 			console.warn('cacheMaxAge set to more then 1 year, be advised that cache times are in seconds, not milliseconds.');
 		}
 	
@@ -77,9 +88,9 @@ export class HttpServer {
 
 	}
 
-	private start() {
+	private start() : Promise<{url: string, server: Server}> {
 		const server = this.app.listen(this.opts.port);
-		const result = new Promise(function (resolve, reject) {
+		return new Promise(function (resolve, reject) {
 			server.on('listening', function () {
 				const addr = server.address() as AddressInfo;
 				const url = `http://127.0.0.1:${addr.port}/manifest.json`;
@@ -99,7 +110,6 @@ export class HttpServer {
 				});
 			});
 			server.on('error', reject);
-		})
-		return result;
+		});
 	}
 }

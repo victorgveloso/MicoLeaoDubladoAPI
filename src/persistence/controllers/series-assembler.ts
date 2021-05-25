@@ -1,9 +1,9 @@
 import { decode } from 'magnet-uri';
 import { IStream } from '../models/stream';
-import MovieDTO, { MovieMagnet } from '../models/transfer-objects/movie';
+import SeriesDTO, { SeriesMagnet } from '../models/transfer-objects/series';
 
-function toStreamData(movie: MovieDTO): IStream[] {
-    return movie.magnets.map((m: MovieMagnet) => {
+function toStreamData(movie: SeriesDTO): IStream[] {
+    return movie.magnets.map((m: SeriesMagnet) => {
 
         const decodedMagnet = decode(m.magnet);
         if(!decodedMagnet.infoHash) {
@@ -22,7 +22,7 @@ function toStreamData(movie: MovieDTO): IStream[] {
     });
 }
 
-export default function disassemble (movie: MovieDTO) {
+export default function disassemble (movie: SeriesDTO) {
     return {
         meta: movie.meta,
         streams: toStreamData(movie),

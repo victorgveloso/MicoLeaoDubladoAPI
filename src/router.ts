@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import disassemble from './persistence/controllers/movie-assembler';
 import MetaDAO from './persistence/controllers/meta-dao';
 import StreamDAO from './persistence/controllers/stream-dao';
+import { AddonInterface } from './persistence/models/stremio';
 
 
 export async function upsertMovieData(movie: any) {
@@ -24,7 +25,7 @@ export async function upsertMovieData(movie: any) {
  * getRouter is a Proxy to the default getRouter 
  * It includes our custom endpoints
  */
-export function getRouter(addonInterface: any) {
+export function getRouter(addonInterface: AddonInterface) {
     const router = gerDefaultRouter(addonInterface);
 
     router.use(bodyParser.json()); // to support JSON-encoded bodies
