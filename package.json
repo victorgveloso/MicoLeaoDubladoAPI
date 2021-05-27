@@ -4,7 +4,7 @@
 	"description": "Stremio addon for dubbed movies and series in portuguese (brazil).",
 	"scripts": {
 		"buildStart": "tsc && node dist/src/index.js",
-		"start": "ts-node src/index.js",
+		"start": "ts-node src/index.ts",
 		"test": "jest",
 		"build": "tsc",
 		"coverage": "jest --coverage"
