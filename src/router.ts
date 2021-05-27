@@ -5,10 +5,9 @@ import disassembleSeries from './persistence/controllers/series-assembler';
 import MetaDAO from './persistence/controllers/meta-dao';
 import StreamDAO from './persistence/controllers/stream-dao';
 import { AddonInterface } from './persistence/models/stremio';
-import MovieDTO, { MovieMagnet } from './persistence/models/transfer-objects/movie';
+import MovieDTO from './persistence/models/transfer-objects/movie';
 import { IStream } from './persistence/models/stream';
-import SeriesDTO, { SeriesMagnet } from './persistence/models/transfer-objects/series';
-import ContentDTO, { BaseMagnet } from './persistence/models/transfer-objects/content';
+import SeriesDTO from './persistence/models/transfer-objects/series';
 import { IMeta } from './persistence/models/meta';
 
 

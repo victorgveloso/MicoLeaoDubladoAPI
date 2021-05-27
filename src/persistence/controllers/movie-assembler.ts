@@ -14,6 +14,7 @@ function toStreamData(movie: MovieDTO): IStream[] {
 
         return <IStream> {
             metaId: movie.meta.id,
+            streamId: movie.meta.id,
             title: m.title,
             type: 'movie',
             infoHash,

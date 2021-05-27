@@ -38,7 +38,8 @@ describe('When a series is disassembled', () => {
 
     it('Should be in the stream collection', async () => {
         console.log(await metaDao.getAll());
-
+    });
+    it("Should contain all attributes on series' meta", async () => {
         var meta = await metaDao.getById(series.meta.id);
 
         for (const prop in series.meta) {
@@ -46,7 +47,8 @@ describe('When a series is disassembled', () => {
         }
     });
     it('Should be in the meta collection', async () => {
-        var stream = (await streamDao.getByMetaId(series.meta.id))[0];
+        let streamId = `${series.meta.id}:${series.magnets[0].season}:${series.magnets[0].episode}`;
+        var stream = (await streamDao.getByStreamId(streamId))[0];
 
         var hostnamePattern = /\w+:\/\/(.*?)[:/]?.*/g;
 
@@ -55,6 +57,7 @@ describe('When a series is disassembled', () => {
             expect(series.magnets[0].magnet).toContain(i.replace(hostnamePattern, '$1'));
         }
         expect(stream.metaId).toEqual(series.meta.id);
+        expect(stream.streamId).toEqual(streamId);
         expect(stream.title).toEqual(series.magnets[0].title);
         expect(stream.season).toEqual(series.magnets[0].season);
         expect(stream.episode).toEqual(series.magnets[0].episode);

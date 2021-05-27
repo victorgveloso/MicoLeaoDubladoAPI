@@ -9,8 +9,10 @@ const {
 const {
     connect
 } = require('../src/config');
+const manifestStub = require('../src/persistence/models/stub/manifest.json');
+const catalogStub = require('../src/persistence/models/stub/catalog.json');
 
-var catalogDao, manifestDao, manifestStub, catalog, manifest;
+var catalogDao, manifestDao, catalog, manifest;
 
 jest.retryTimes(5);
 
@@ -25,28 +27,7 @@ describe('Given a manifest retrieved by mongo db', () => {
         await mongoose.disconnect();
     });
     beforeEach(async () => {
-        var catalogStub = {
-            type: "movie",
-            id: "BrazilianCatalog",
-            name: "Filmes Dublados (ptbr)",
-            extra: [{
-                name: "search"
-            }]
-        };
-
         catalog = await catalogDao.add(catalogStub);
-
-        manifestStub = {
-            id: "brazilian-addon",
-            name: "Brazilian Addon",
-            version: "0.0.1",
-            description: "Stremio addon for dubbed movies in portuguese (brazil).",
-            resources: ["catalog", "stream", "meta"],
-            types: ["movie"],
-            catalogs: [catalog],
-            idPrefixes: ["tt"]
-        };
-
         manifest = await manifestDao.add(manifestStub);
     });
     afterEach(async () => {

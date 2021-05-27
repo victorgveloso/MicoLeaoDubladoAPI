@@ -107,14 +107,14 @@ describe('Stream related tests', () => {
         }));
         await timeout(500);
         let streamDao = new StreamDAO();
-        let streams = await streamDao.getByMetaId(movie.meta.id);
+        let streams = await streamDao.getByStreamId(movie.meta.id);
         expect(streams).toHaveLength(2)
     });
     it('Should not add streams with known infoHash', async () => {
         await upsertContentData(disassemble(movie));
         await timeout(500);
         let streamDao = new StreamDAO();
-        let streams = await streamDao.getByMetaId(movie.meta.id);
+        let streams = await streamDao.getByStreamId(movie.meta.id);
         expect(streams).toHaveLength(1);
     });
     it('Should only add unknown infoHashes from list of streams', async () => {
@@ -133,7 +133,7 @@ describe('Stream related tests', () => {
         }));
         await timeout(500);
         let streamDao = new StreamDAO();
-        let streams = await streamDao.getByMetaId(movie.meta.id);
+        let streams = await streamDao.getByStreamId(movie.meta.id);
         expect(streams).toHaveLength(3);
     });
     it('Should not remove infoHashes not found on request', async () => {
@@ -159,7 +159,7 @@ describe('Stream related tests', () => {
         }));
         await timeout(500);
         let streamDao = new StreamDAO();
-        let streams = await streamDao.getByMetaId(movie.meta.id);
+        let streams = await streamDao.getByStreamId(movie.meta.id);
         expect(streams).toHaveLength(3);
     });
 });

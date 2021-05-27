@@ -1,21 +1,7 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
-/* TODO: StreamId class and streamId virtual function should be deprecated and 
-streamId should be added as a property to StreamSchema */
-export class StreamId {
-    static toObject(streamId: string) {
-        const fields: string[] = streamId.split(':');
-        const metaId = fields[0];
-        const season = parseInt(fields[1]);
-        const episode = parseInt(fields[2]);
-        return {metaId, season, episode};
-    }
-    static fromObject(obj: {metaId: string, season: number, episode: number}) {
-        return `${obj.metaId}:${obj.episode}:${obj.season}`;
-    }
-}
-
 export interface IStream extends Document {
     metaId: string
+    streamId: string
     type: string
     title: string
     infoHash: string
@@ -24,11 +10,23 @@ export interface IStream extends Document {
     episode?: number
     season?: number
 }
+function generateStreamId(stream: IStream): string {
+    if (stream.type && stream.type === "series") {
+        return `${stream.metaId}:${stream.season}:${stream.episode}`;
+    }
+    return stream.metaId;
+}
 
 export const StreamSchema: Schema = new Schema({
     metaId: {
         type: 'String',
         required: true
+    },
+    streamId: {
+        type: 'String',
+        default: function(this: IStream) {
+            return generateStreamId(this);
+        }
     },
     type: {
         type: 'String',
@@ -60,12 +58,7 @@ export const StreamSchema: Schema = new Schema({
     }
 });
 
-StreamSchema.virtual("streamId").get(function (this: IStream) {
-    if (this.type === "series") {
-        return StreamId.fromObject(this as any);
-    }
-    return this.metaId;
-})
+StreamSchema.static("generateStreamId", generateStreamId);
 
 const Stream: Model<IStream> = mongoose.model<IStream>('Stream', StreamSchema);
 

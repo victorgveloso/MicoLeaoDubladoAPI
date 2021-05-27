@@ -47,13 +47,7 @@ export async function createStreamHandler(args: Args) : Promise<{ streams: IStre
     let streamDao = new StreamDAO();
     let result: { streams: IStream[] } = { streams: [] };
     try {
-        if (args.type === 'movie') {
-            result = { streams: await streamDao.getByMetaId(args.id) };
-        }
-        /* TODO: It should not be necessary to use another method (getByStreamId is an ugly solution) */
-        else if (args.type === 'series') {
-            result = { streams: await streamDao.getByStreamId(args.id) };
-        }
+        result = { streams: await streamDao.getByStreamId(args.id) };
     } catch (error) {
         console.error(`Stream Handler ERROR: ${error}`);
     }
