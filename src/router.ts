@@ -41,16 +41,16 @@ export function getRouter(addonInterface: AddonInterface) {
 
         
         upsertContentData(disassembleMovie(req.body as MovieDTO))
-            .then(() => res.send(200))
-            .catch(err => res.send(err))
+            .then(() => res.sendStatus(200))
+            .catch(err => res.sendStatus(err))
     });
 
     router.post('/series', (req: any, res: any) => {
 
         upsertContentData(disassembleSeries(req.body as SeriesDTO))
-            .then(() => res.send(200))
-            .catch(err => res.send(err))
-    })
+            .then(() => res.sendStatus(200))
+            .catch(err => res.sendStatus(err));
+    });
 
     return router;
 }

@@ -18,7 +18,7 @@ export async function createCatalogHandler(args: Args): Promise<{ metas: IMeta[]
             console.error("Catalog Handler ERROR");
             throw error;
         }
-    } else if (args.type == 'movie') {
+    } else if (args.type === 'movie') {
         if (args.extra!.genre) {
             try {
                 result = {
@@ -47,7 +47,13 @@ export async function createStreamHandler(args: Args) : Promise<{ streams: IStre
     let streamDao = new StreamDAO();
     let result: { streams: IStream[] } = { streams: [] };
     try {
-        result = { streams: await streamDao.getByMetaId(args.id) };
+        if (args.type === 'movie') {
+            result = { streams: await streamDao.getByMetaId(args.id) };
+        }
+        /* TODO: It should not be necessary to use another method (getByStreamId is an ugly solution) */
+        else if (args.type === 'series') {
+            result = { streams: await streamDao.getByStreamId(args.id) };
+        }
     } catch (error) {
         console.error(`Stream Handler ERROR: ${error}`);
     }

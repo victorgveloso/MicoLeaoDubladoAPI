@@ -1,4 +1,18 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
+/* TODO: StreamId class and streamId virtual function should be deprecated and 
+streamId should be added as a property to StreamSchema */
+export class StreamId {
+    static toObject(streamId: string) {
+        const fields: string[] = streamId.split(':');
+        const metaId = fields[0];
+        const season = parseInt(fields[1]);
+        const episode = parseInt(fields[2]);
+        return {metaId, season, episode};
+    }
+    static fromObject(obj: {metaId: string, season: number, episode: number}) {
+        return `${obj.metaId}:${obj.episode}:${obj.season}`;
+    }
+}
 
 export interface IStream extends Document {
     metaId: string
@@ -48,7 +62,7 @@ export const StreamSchema: Schema = new Schema({
 
 StreamSchema.virtual("streamId").get(function (this: IStream) {
     if (this.type === "series") {
-        return `${this.metaId}:${this.episode}:${this.season}`
+        return StreamId.fromObject(this as any);
     }
     return this.metaId;
 })

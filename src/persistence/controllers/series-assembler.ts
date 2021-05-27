@@ -11,7 +11,7 @@ function toStream(series: SeriesDTO, magnet: SeriesMagnet) {
         episode: magnet.episode,
         season: magnet.season,
         title: magnet.title,
-        type: 'movie',
+        type: 'series',
         infoHash,
         sources
     };
@@ -30,7 +30,7 @@ function toStreamCollection(series: SeriesDTO): IStream[] {
     return series.magnets.map((m)=>toStream(series,m));
 }
 
-export default function disassemble (series: SeriesDTO) {
+export default function disassemble(series: SeriesDTO) {
     return {
         meta: series.meta,
         streams: toStreamCollection(series),
