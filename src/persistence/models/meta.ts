@@ -1,8 +1,9 @@
 import { Schema, model } from 'mongoose';
+import { ContentType } from './stremio';
 
 export interface IMeta {
     id: string
-    type: string
+    type: ContentType
     name: string
     genres: string[]
     poster: string

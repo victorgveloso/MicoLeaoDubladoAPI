@@ -1,13 +1,14 @@
-import { Schema, model, Model } from 'mongoose';
+import { Schema, model, Model, Document } from 'mongoose';
 import { CatalogSchema, ICatalog } from "./catalog";
+import { ContentType, ShortManifestResource } from './stremio';
 
-export interface IManifest {
+export interface IManifest extends Document {
     id: string
     name: string
     version: string
     description: string
-    resources: string[]
-    types: string[]
+    resources: ShortManifestResource[]
+    types: ContentType[]
     catalogs: ICatalog[]
     idPrefixes: string[]
 }

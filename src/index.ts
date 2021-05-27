@@ -6,7 +6,6 @@ import {
     connect
 } from './config';
 import ManifestDAO from './persistence/controllers/manifest-dao';
-
 import {
     getRouter
 } from './router';
@@ -16,13 +15,13 @@ import {
 import {
     addonBuilder
 } from 'stremio-addon-sdk';
-
 import {
     createCatalogHandler,
     createStreamHandler
 } from './addon';
-
-import DefaultManifest from './persistence/models/stub/manifest.json';
+import Manifest, { IManifest } from './persistence/models/manifest';
+import defaultManifest from './persistence/models/stub/manifest.json';
+import { AddonInterface } from './persistence/models/stremio';
 
 connect().then((mongo_uri) => {
     console.log(`MONGO URI: ${mongo_uri}`);
@@ -38,11 +37,11 @@ connection.once('open', () => {
             console.error("[Warning] Something went wrong!");
             console.error(error);
             console.error("[Warning] Falling back to default manifest");
-            init(new DefaultManifest());
+            init(new Manifest(defaultManifest));
         });
 });
 
-function init(manifest) {
+function init(manifest: IManifest) {
     new HttpServer(setupAddonInterface(manifest), {
         port: PORT,
         getRouter
@@ -57,9 +56,9 @@ function init(manifest) {
     });
 }
 
-function setupAddonInterface(manifest) {
+function setupAddonInterface(manifest: IManifest) : AddonInterface {
     const builder = new addonBuilder(manifest.toObject());
     builder.defineStreamHandler(createStreamHandler);
     builder.defineCatalogHandler(createCatalogHandler);
-    return builder.getInterface();
+    return builder.getInterface() as AddonInterface;
 }

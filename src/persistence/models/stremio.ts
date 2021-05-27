@@ -13,7 +13,7 @@ export type ContentType = 'movie' | 'series' | 'channel' | 'tv';
 export interface Args {
     type: ContentType;
     id: string;
-    extra: { search: string; genre: string; skip: number };
+    extra?: { search: string; genre: string; skip: number };
 }
 
 /**

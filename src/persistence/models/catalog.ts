@@ -1,8 +1,9 @@
 import { Schema, model, Model } from 'mongoose';
+import { ContentType } from './stremio';
 
 export interface ICatalog {
     id: string
-    type: string
+    type: ContentType
     name: string
     genres: string[]
     extraSupported: string[]
