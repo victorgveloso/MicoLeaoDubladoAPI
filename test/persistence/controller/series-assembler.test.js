@@ -36,7 +36,7 @@ describe('When a series is disassembled', () => {
         await streamDao.addIfAbsent(streams[0]);
     });
 
-    it('Should be in the stream collection', async () => {
+    it('Should be in the meta collection', async () => {
         console.log(await metaDao.getAll());
     });
     it("Should contain all attributes on series' meta", async () => {
@@ -46,7 +46,7 @@ describe('When a series is disassembled', () => {
             expect(meta).toHaveProperty(prop);
         }
     });
-    it('Should be in the meta collection', async () => {
+    it('Should be in the stream collection', async () => {
         let streamId = `${series.meta.id}:${series.magnets[0].season}:${series.magnets[0].episode}`;
         var stream = (await streamDao.getByStreamId(streamId))[0];
 

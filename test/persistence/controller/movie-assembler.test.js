@@ -33,7 +33,7 @@ describe('When a movie is disassembled', () => {
         await streamDao.addIfAbsent(streams[0]);
     });
 
-    it('Should be in the stream collection', async () => {
+    it('Should be in the meta collection', async () => {
         console.log(await metaDao.getAll());
 
     });
@@ -44,7 +44,7 @@ describe('When a movie is disassembled', () => {
             expect(meta).toHaveProperty(prop);
         }
     });
-    it('Should be in the meta collection', async () => {
+    it('Should be in the stream collection', async () => {
         var stream = (await streamDao.getByStreamId(movie.meta.id))[0];
 
         var hostnamePattern = /\w+:\/\/(.*?)[:/]?.*/g;
