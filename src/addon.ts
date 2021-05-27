@@ -4,54 +4,52 @@ import { IMeta } from './persistence/models/meta';
 import { IStream } from './persistence/models/stream';
 import { Args } from './persistence/models/stremio';
 
-export function createCatalogHandler(args: Args): {metas: IMeta[]} {
+export async function createCatalogHandler(args: Args): Promise<{ metas: IMeta[] }> {
     let metaDao = new MetaDAO();
-    const skip = args.extra.skip || 0;
+    const skip = args.extra!.skip || 0;
     const limit = 100;
-    let result: {metas: IMeta[]} = {metas: []};
-    if (args.extra.search) {
-        metaDao.getByName(args.extra.search, skip, limit).then((metas) => {
+    let result: { metas: IMeta[] } = { metas: [] };
+    if (args.extra!.search) {
+        try {
             result = {
-                metas
+                metas: await metaDao.getByName(args.extra!.search, skip, limit)
             };
-        }).catch((error) => {
-            throw new Error(`Catalog Handler ERROR: ${error}`);
-        });
+        } catch (error) {
+            console.error("Catalog Handler ERROR");
+            throw error;
+        }
     } else if (args.type == 'movie') {
-        if (args.extra.genre) {
-            metaDao.getByGenre(args.id, args.extra.genre, skip, limit).then((metas) => {
+        if (args.extra!.genre) {
+            try {
                 result = {
-                    metas
+                    metas: await metaDao.getByGenre(args.id, args.extra!.genre, skip, limit)
                 };
-            }).catch((error) => {
-                throw new Error(`Catalog Handler ERROR: ${error}`);
-            });
+            } catch (error) {
+                console.error("Catalog Handler ERROR");
+                throw error;
+            }
         }
         else {
-            metaDao.getByCatalogId(args.id, skip, limit).then((metas) => {
+            try {
                 result = {
-                    metas
+                    metas: await metaDao.getByCatalogId(args.id, skip, limit)
                 };
-            }).catch((error) => {
-                throw new Error(`Catalog Handler ERROR: ${error}`);
-            });
+            } catch (error) {
+                console.error("Catalog Handler ERROR");
+                throw error;
+            }
         }
     }
     return result;
 }
 
-export function createStreamHandler(args: Args) {
+export async function createStreamHandler(args: Args) : Promise<{ streams: IStream[] }> {
     let streamDao = new StreamDAO();
-    let result : {streams: IStream[]} = {streams: []};
-    streamDao.getByMetaId(args.id).then((streams) => {
-        result = {
-            streams
-        };
-    }).catch((error) => {
+    let result: { streams: IStream[] } = { streams: [] };
+    try {
+        result = { streams: await streamDao.getByMetaId(args.id) };
+    } catch (error) {
         console.error(`Stream Handler ERROR: ${error}`);
-        result = {
-            streams: []
-        };
-    });
+    }
     return result;
 }
