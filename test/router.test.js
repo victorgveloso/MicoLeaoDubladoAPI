@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 const timeout = require('./timeout');
 const {
-    upsertMovieData
+    upsertContentData
 } = require('../src/router');
 const MetaDAO = require('../src/persistence/controllers/meta-dao').default;
 const StreamDAO = require('../src/persistence/controllers/stream-dao').default;
@@ -12,6 +12,7 @@ const path = require('path');
 const {
     connect
 } = require('../src/config');
+const { default: disassemble } = require('../src/persistence/controllers/movie-assembler');
 
 let movie;
 
@@ -22,21 +23,24 @@ beforeAll(async () => {
         await connect();
         await Promise.all([Meta.deleteMany().exec(), Stream.deleteMany().exec()]);
     } catch (error) {
-        throw Error("Exception thrown during test class setup " + error);
+        console.error("Exception thrown during test class setup");
+        throw error;
     }
 });
 afterAll(async () => {
     try {
         await mongoose.disconnect();
     } catch (error) {
-        throw Error("Exception thrown during mongoose disconnection " + error);
+        console.error("Exception thrown during mongoose disconnection");
+        throw error;
     }
 });
 afterEach(async () => {
     try {
         await Promise.all([Meta.deleteMany().exec(), Stream.deleteMany().exec()]);
     } catch (error) {
-        throw Error("Exception thrown during test clean up (tear down) " + error);
+        console.error("Exception thrown during test clean up (tear down)");
+        throw error;
     }
 });
 beforeEach(async () => {
@@ -48,12 +52,14 @@ beforeEach(async () => {
     try {
         await Promise.all([Meta.deleteMany().exec(), Stream.deleteMany().exec()]);
     } catch (error) {
-        throw Error("Exception thrown during test clean up (set up) " + error);
+        console.error("Exception thrown during movie insertion (set up)");
+        throw error;
     }
     try {
-        await upsertMovieData(movie);
+        await upsertContentData(disassemble(movie));
     } catch (error) {
-        throw Error("Exception thrown during movie insertion (set up) " + error);
+        console.error("Exception thrown during movie insertion (set up)");
+        throw error;
     }
 });
 describe('Meta related tests', () => {
@@ -64,26 +70,26 @@ describe('Meta related tests', () => {
     });
     it('Should not create new meta values when called again', async () => {
         const name = "Star Wars: The Rise of Skywalker"
-        await upsertMovieData({
+        await upsertContentData(disassemble({
             meta: {
                 ...movie.meta,
                 name
             },
             magnets: movie.magnets
-        });
+        }));
         let metaDao = new MetaDAO();
         let metas = await metaDao.getAll();
         expect(metas).toHaveLength(1);
     });
     it('Should keep old meta when adding new streams', async () => {
         const name = "Star Wars: The Rise of Skywalker";
-        await upsertMovieData({
+        await upsertContentData(disassemble({
             meta: {
                 ...movie.meta,
                 name
             },
             magnets: movie.magnets
-        });
+        }));
         let metaDao = new MetaDAO();
         expect(metaDao.getById(movie.meta.id)).resolves.toEqual(expect.objectContaining({
             name: movie.meta.name
@@ -92,27 +98,27 @@ describe('Meta related tests', () => {
 });
 describe('Stream related tests', () => {
     it('Should add streams with new infoHash', async () => {
-        await upsertMovieData({
+        await upsertContentData(disassemble({
             meta: movie.meta,
             magnets: [{
                 title: "another magnet",
                 magnet: "magnet:?xt=urn:btih:8b37e5b540c2bbe9c4f1513504c4f37a9d37b75b"
             }]
-        });
+        }));
         await timeout(500);
         let streamDao = new StreamDAO();
         let streams = await streamDao.getByMetaId(movie.meta.id);
         expect(streams).toHaveLength(2)
     });
     it('Should not add streams with known infoHash', async () => {
-        await upsertMovieData(movie);
+        await upsertContentData(disassemble(movie));
         await timeout(500);
         let streamDao = new StreamDAO();
         let streams = await streamDao.getByMetaId(movie.meta.id);
         expect(streams).toHaveLength(1);
     });
     it('Should only add unknown infoHashes from list of streams', async () => {
-        await upsertMovieData({
+        await upsertContentData(disassemble({
             meta: movie.meta,
             magnets: [{
                     title: "a last magnet",
@@ -124,22 +130,22 @@ describe('Stream related tests', () => {
                     magnet: "magnet:?xt=urn:btih:8b37e5b540c2bbe9c4f1513504c4f37a9d37b75b"
                 }
             ]
-        });
+        }));
         await timeout(500);
         let streamDao = new StreamDAO();
         let streams = await streamDao.getByMetaId(movie.meta.id);
         expect(streams).toHaveLength(3);
     });
     it('Should not remove infoHashes not found on request', async () => {
-        await upsertMovieData({
+        await upsertContentData(disassemble({
             meta: movie.meta,
             magnets: [{
                 title: "another magnet",
                 magnet: "magnet:?xt=urn:btih:8b37e5b540c2bbe9c4f1513504c4f37a9d37b75b"
             }]
-        });
+        }));
         await timeout(500);
-        await upsertMovieData({
+        await upsertContentData(disassemble({
             meta: movie.meta,
             magnets: [{
                     title: "a last magnet",
@@ -150,7 +156,7 @@ describe('Stream related tests', () => {
                     magnet: "magnet:?xt=urn:btih:8b37e5b540c2bbe9c4f1513504c4f37a9d37b75b"
                 }
             ]
-        });
+        }));
         await timeout(500);
         let streamDao = new StreamDAO();
         let streams = await streamDao.getByMetaId(movie.meta.id);

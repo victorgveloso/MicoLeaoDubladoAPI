@@ -9,20 +9,19 @@ import MovieDTO, { MovieMagnet } from './persistence/models/transfer-objects/mov
 import { IStream } from './persistence/models/stream';
 import SeriesDTO, { SeriesMagnet } from './persistence/models/transfer-objects/series';
 import ContentDTO, { BaseMagnet } from './persistence/models/transfer-objects/content';
+import { IMeta } from './persistence/models/meta';
 
 
-export async function upsertContentData <T extends BaseMagnet> (content: ContentDTO<T>, fn: (c: ContentDTO<T>)=>any) {
+export async function upsertContentData({meta, streams}: {
+    meta: IMeta;
+    streams: IStream[];
+}) {
     let metaDao = new MetaDAO();
     let streamDao = new StreamDAO();
 
-    const {
-        meta,
-        streams
-    } = fn(content);
-
     await metaDao.addIfAbsent(meta);
-    await streams.map((m: IStream) => {
-        streamDao.addIfAbsent(m)
+    streams.map((m: IStream) => {
+        streamDao.addIfAbsent(m);
     });
 }
 
@@ -40,14 +39,15 @@ export function getRouter(addonInterface: AddonInterface) {
 
     router.post('/movie', (req: any, res: any) => {
 
-        upsertContentData<MovieMagnet>(req.body as MovieDTO, disassembleMovie)
+        
+        upsertContentData(disassembleMovie(req.body as MovieDTO))
             .then(() => res.send(200))
             .catch(err => res.send(err))
     });
 
     router.post('/series', (req: any, res: any) => {
 
-        upsertContentData<SeriesMagnet>(req.body as SeriesDTO, disassembleSeries)
+        upsertContentData(disassembleSeries(req.body as SeriesDTO))
             .then(() => res.send(200))
             .catch(err => res.send(err))
     })
