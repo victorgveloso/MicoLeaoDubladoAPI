@@ -6,6 +6,7 @@ export interface IStream extends Document {
     title: string
     infoHash: string
     sources: string[]
+    seeders?: number
     fileIdx?: number
     episode?: number
     season?: number
@@ -53,6 +54,10 @@ export const StreamSchema: Schema = new Schema({
         required: false
     },
     season: {
+        type: 'Number',
+        required: false
+    },
+    seeders: {
         type: 'Number',
         required: false
     }

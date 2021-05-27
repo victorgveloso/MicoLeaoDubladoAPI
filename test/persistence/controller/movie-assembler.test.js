@@ -55,5 +55,6 @@ describe('When a movie is disassembled', () => {
         }
         expect(stream.metaId).toEqual(movie.meta.id);
         expect(stream.title).toEqual(movie.magnets[0].title);
+        expect(stream.seeders).toEqual(movie.magnets[0].seeders);
     });
 });

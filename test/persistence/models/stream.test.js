@@ -24,6 +24,8 @@ describe("Given a stream stub", ()=>{
     
         return expect({
                 metaId: stream.metaId,
+                streamId: stream.metaId,
+                seeders: stream.seeders,
                 infoHash: stream.infoHash,
                 title: stream.title,
                 sources,

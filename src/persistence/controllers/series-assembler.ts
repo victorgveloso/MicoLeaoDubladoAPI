@@ -10,6 +10,7 @@ function toStream(series: SeriesDTO, magnet: SeriesMagnet) {
         fileIdx: magnet.fileIdx,
         episode: magnet.episode,
         season: magnet.season,
+        seeders: magnet.seeders,
         title: magnet.title,
         type: 'series',
         infoHash,
