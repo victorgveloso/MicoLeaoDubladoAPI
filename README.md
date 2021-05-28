@@ -5,6 +5,7 @@
 [![Automated tests](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/test.yml/badge.svg)](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/test.yml)
 [![Check test server health](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/healthcheck.yml/badge.svg)](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/healthcheck.yml)
 [![Publish Typedoc to Github Pages](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/docs.yml/badge.svg)](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/docs.yml)
+[![codecov](https://codecov.io/gh/victorgveloso/MicoLeaoDubladoAPI/branch/main/graph/badge.svg?token=YZPBWPGXRM)](https://codecov.io/gh/victorgveloso/MicoLeaoDubladoAPI)
 
 Mico Leão Dublado is...
 
