@@ -16,5 +16,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
-          # for v3.html and perhaps CNAME
-          keep_files: true
