@@ -1,0 +1,289 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>brazilian-stremio-addon</title>
+	<meta name="description" content="Documentation for brazilian-stremio-addon">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">brazilian-stremio-addon</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>brazilian-stremio-addon</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#mico-leão-dublado-api" id="mico-leão-dublado-api" style="color: inherit; text-decoration: none;">
+					<h1>Mico Leão Dublado <strong>API</strong></h1>
+				</a>
+				<p><img src="https://i.ibb.co/9tWdHsv/icon.jpg" alt="Mico Leão Dublado Logo"></p>
+				<p><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/actions.yml"><img src="https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/actions.yml/badge.svg" alt="Node.js CI"></a></p>
+				<p>Mico Leão Dublado is...</p>
+				<p>This project adheres to the Contributor Covenant
+					<a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/master/CODE_OF_CONDUCT.md">code of conduct</a>.
+				By participating, you are expected to uphold this code.</p>
+				<a href="#dependencies" id="dependencies" style="color: inherit; text-decoration: none;">
+					<h2>Dependencies</h2>
+				</a>
+				<ul>
+					<li>NodeJS</li>
+					<li>TypeScript</li>
+					<li>Docker (with docker-compose)
+						<a href="#running" id="running" style="color: inherit; text-decoration: none;">
+							<h2>Running</h2>
+						</a>
+					</li>
+					<li>Run:<pre><code class="language-sh"><span style="color: #000000">make start </span><span style="color: #008000"># to start</span>
+<span style="color: #000000">make </span><span style="color: #795E26">test</span><span style="color: #000000"> </span><span style="color: #008000"># to run automated tests</span>
+<span style="color: #000000">make clean </span><span style="color: #008000"># to delete data, cache and docker image</span>
+<span style="color: #000000">make </span><span style="color: #008000"># to run all three commands in the order: clean -&gt; test -&gt; start</span>
+</code></pre>
+					</li>
+				</ul>
+				<a href="#using" id="using" style="color: inherit; text-decoration: none;">
+					<h2>Using</h2>
+				</a>
+				<p>Mico Leão Dublado API is a HTTP API (use an HTTP client of your choice).</p>
+				<a href="#entrypoints" id="entrypoints" style="color: inherit; text-decoration: none;">
+					<h3>Entrypoints</h3>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th>Verb</th>
+							<th>path</th>
+							<th>request body</th>
+							<th>request example</th>
+							<th>response example</th>
+							<th>response model</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>GET</td>
+							<td>/manifest.json</td>
+							<td>X</td>
+							<td>X</td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/stub/manifest.json">/src/persistence/models/stub/manifest.json</a></td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/manifest.ts">/src/persistence/models/manifest.ts</a></td>
+						</tr>
+						<tr>
+							<td>GET</td>
+							<td>/stream/series/{imdbId}:{season}:{episode}.json</td>
+							<td>X</td>
+							<td>X</td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/stub/stream.json">/src/persistence/models/stub/stream.json</a></td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/stream.ts">/src/persistence/models/stream.ts</a></td>
+						</tr>
+						<tr>
+							<td>GET</td>
+							<td>/meta/series/{imdbId}.json</td>
+							<td>X</td>
+							<td>X</td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/stub/meta.json">/src/persistence/models/stub/meta.json</a></td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/meta.ts">/src/persistence/models/meta.ts</a></td>
+						</tr>
+						<tr>
+							<td>GET</td>
+							<td>/catalog/series/{imdbId}/{extra?}.json</td>
+							<td>X</td>
+							<td>X</td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/stub/catalog.json">/src/persistence/models/stub/catalog.json</a></td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/catalog.ts">/src/persistence/models/catalog.ts</a></td>
+						</tr>
+						<tr>
+							<td>GET</td>
+							<td>/stream/movie/{imdbId}.json</td>
+							<td>X</td>
+							<td>X</td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/stub/stream.json">/src/persistence/models/stub/stream.json</a></td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/stream.ts">/src/persistence/models/stream.ts</a></td>
+						</tr>
+						<tr>
+							<td>GET</td>
+							<td>/meta/movie/{imdbId}.json</td>
+							<td>X</td>
+							<td>X</td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/stub/meta.json">/src/persistence/models/stub/meta.json</a></td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/meta.ts">/src/persistence/models/meta.ts</a></td>
+						</tr>
+						<tr>
+							<td>GET</td>
+							<td>/catalog/movie/{imdbId}/{extra?}.json</td>
+							<td>X</td>
+							<td>X</td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/stub/catalog.json">/src/persistence/models/stub/catalog.json</a></td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/catalog.ts">/src/persistence/models/catalog.ts</a></td>
+						</tr>
+						<tr>
+							<td>POST</td>
+							<td>/movie</td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/transfer-objects/movie.ts">/src/persistence/models/transfer-objects/movie.ts</a></td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/stub/movie.json">/src/persistence/models/stub/movie.json</a></td>
+							<td>X</td>
+							<td>X</td>
+						</tr>
+						<tr>
+							<td>POST</td>
+							<td>/series</td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/transfer-objects/movseriesie.ts">/src/persistence/models/transfer-objects/series.ts</a></td>
+							<td><a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/src/persistence/models/stub/series.json">/src/persistence/models/stub/series.json</a></td>
+							<td>X</td>
+							<td>X</td>
+						</tr>
+				</tbody></table>
+				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+					<h2>Contributing</h2>
+				</a>
+				<p>If you are interested in reporting/fixing issues and contributing directly to the code base, please see <a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> for more information on what we&#39;re looking for and how to get started.</p>
+				<a href="#community" id="community" style="color: inherit; text-decoration: none;">
+					<h2>Community</h2>
+				</a>
+				<p>You might find us in the <a href="https://discord.gg/WTqVGKXh">StremioAddons Discord Server</a> and in <a href="https://reddit.com/r/StremioAddons/">r/StremioAddons</a>.</p>
+				<a href="#license-apache" id="license-apache" style="color: inherit; text-decoration: none;">
+					<h3>License: <a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/master/LICENSE">Apache</a></h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/httpserver.html">Http<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/addon.html">addon</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/config.html">config</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/index.html">index</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_controllers_catalog_dao.html">persistence/controllers/catalog-<wbr>dao</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_controllers_manifest_dao.html">persistence/controllers/manifest-<wbr>dao</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_controllers_meta_dao.html">persistence/controllers/meta-<wbr>dao</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_controllers_movie_assembler.html">persistence/controllers/movie-<wbr>assembler</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_controllers_series_assembler.html">persistence/controllers/series-<wbr>assembler</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_controllers_stream_dao.html">persistence/controllers/stream-<wbr>dao</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_models_catalog.html">persistence/models/catalog</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_models_manifest.html">persistence/models/manifest</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_models_meta.html">persistence/models/meta</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_models_stream.html">persistence/models/stream</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_models_stremio.html">persistence/models/stremio</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_models_transfer_objects_content.html">persistence/models/transfer-<wbr>objects/content</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_models_transfer_objects_movie.html">persistence/models/transfer-<wbr>objects/movie</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/persistence_models_transfer_objects_series.html">persistence/models/transfer-<wbr>objects/series</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/router.html">router</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
