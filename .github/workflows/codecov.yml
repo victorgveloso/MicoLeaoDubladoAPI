@@ -1,0 +1,23 @@
+name: Automated tests coverage report submission to codecov
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10'
+    - run: make mongo
+    - run: npm install
+    - run: npm install codecov -g
+    - run: npm test -- --coverage
+    - uses: codecov/codecov-action@v1
+      with:
+          token: ${{ secrets.CODECOV_TOKEN }}
