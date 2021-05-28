@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
+/* TODO: Add size as attribute of IStream */
 export interface IStream extends Document {
     metaId: string
     streamId: string

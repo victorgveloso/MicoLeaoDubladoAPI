@@ -2,7 +2,7 @@ const manifest =  {
 	id: "brazilian-addon",
 	name: "Mico-Leão Dublado (BR addon)",
 	logo: "https://i.ibb.co/9tWdHsv/icon.jpg",
-	version: "0.2.0",
+	version: "1.2.0",
 	description: "Stremio addon for dubbed movies in portuguese (brazil).",
 	resources: ["catalog", "stream"],
 	types: ["movie", "series"],

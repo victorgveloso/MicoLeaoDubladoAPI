@@ -1,0 +1,10 @@
+name: Check test server health
+
+on:
+  schedule:
+    - cron:  '0 0/2 * * *'
+jobs:
+  startup:
+    runs-on: ubuntu-latest
+    steps:
+    - run: curl --fail -sv  ${{ secrets.SERVER_HOST }} --retry 12 --retry-delay 5 --retry-connrefused

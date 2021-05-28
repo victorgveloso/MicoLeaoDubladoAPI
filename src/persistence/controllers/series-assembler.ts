@@ -1,12 +1,13 @@
 import { decode } from 'magnet-uri';
+import { IMeta } from '../models/meta';
 import { IStream } from '../models/stream';
 import SeriesDTO, { SeriesMagnet } from '../models/transfer-objects/series';
 
-function toStream(series: SeriesDTO, magnet: SeriesMagnet) {
+function toStream(meta: IMeta, magnet: SeriesMagnet) {
     const { infoHash, sources } = decodeMagnet(magnet);
     
     return <IStream> {
-        metaId: series.meta.id,
+        metaId: meta.id,
         fileIdx: magnet.fileIdx,
         episode: magnet.episode,
         season: magnet.season,
@@ -28,7 +29,7 @@ function decodeMagnet(magnet: SeriesMagnet) {
 }
 
 function toStreamCollection(series: SeriesDTO): IStream[] {
-    return series.magnets.map((m)=>toStream(series,m));
+    return series.magnets.map((m)=>toStream(series.meta,m));
 }
 
 export default function disassemble(series: SeriesDTO) {

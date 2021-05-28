@@ -8,7 +8,7 @@ const defaultManifest = require("../../../src/persistence/models/stub/manifest.j
 const {
     connect
 } = require('../../../src/config');
-var manifestStub, catalog, origManifest, catalogDao, manifestDao;
+var catalog, origManifest, catalogDao, manifestDao;
 
 jest.retryTimes(5);
 
@@ -31,25 +31,13 @@ beforeAll(async () => {
 afterAll(async () => {
     console.log(origManifest);
     try {
-        await manifestDao.add(origManifest || manifestStub);
+        await manifestDao.add(origManifest || defaultManifest);
     } catch(error) { /* Do nothing. */}
 
     await mongoose.disconnect();
 });
 beforeEach(async () => {
     catalog = await catalogDao.add(catalogStub);
-
-    manifestStub = {
-        id: "brazilian-addon",
-        name: "Brazilian Addon",
-        version: "0.0.1",
-        description: "Stremio addon for dubbed movies in portuguese (brazil).",
-        resources: ["catalog", "stream"],
-        types: ["movie"],
-        catalogs: [catalog.toObject()],
-        idPrefixes: ["tt"]
-    };
-
 });
 afterEach(async () => {
     await Manifest.deleteMany({}).exec();
@@ -59,15 +47,12 @@ afterEach(async () => {
 describe('When a manifest is added to db', () => {
     var manifest;
     beforeEach(async () => {
-        m = await manifestDao.add(manifestStub);
-
+        m = await manifestDao.add(defaultManifest);
         manifest = await manifestDao.get();
-
     });
     it('should be returned by manifestDao.get', async () => {
 
         expect(manifest).toMatchObject({
-            ...manifestStub,
             $__: expect.any(Object),
             catalogs: expect.any(Array),
             idPrefixes: expect.any(Array),
