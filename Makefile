@@ -13,3 +13,5 @@ mongo:
 	docker-compose up -d mongo
 clean:
 	docker-compose down --volumes --rmi local
+docs:
+	npm run build:docs

@@ -41,6 +41,10 @@ connection.once('open', () => {
         });
 });
 
+/**
+ * Initializes the express.js server
+ * @param manifest Object describing Addon and its settings
+ */
 function init(manifest: IManifest) {
     new HttpServer(setupAddonInterface(manifest), {
         port: PORT,
@@ -55,7 +59,11 @@ function init(manifest: IManifest) {
         console.error(error);
     });
 }
-
+/**
+ * Create AddonInterface configured with content handlers
+ * @param manifest Object describing Addon and its settings
+ * @returns The configured addon's top-level object
+ */
 function setupAddonInterface(manifest: IManifest) : AddonInterface {
     const builder = new addonBuilder(manifest.toObject());
     builder.defineStreamHandler(createStreamHandler);

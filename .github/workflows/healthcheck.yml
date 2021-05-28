@@ -3,6 +3,7 @@ name: Check test server health
 on:
   schedule:
     - cron:  '0 0/2 * * *'
+  workflow_dispatch:
 jobs:
   startup:
     runs-on: ubuntu-latest

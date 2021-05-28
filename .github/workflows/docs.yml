@@ -3,12 +3,18 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: TypeStrong/typedoc-action@v1
+      - run: npm install
+      - run: make docs
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          args: --entrypoints src/index.ts
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          # for v3.html and perhaps CNAME
+          keep_files: true

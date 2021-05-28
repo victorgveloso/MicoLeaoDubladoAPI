@@ -8,6 +8,9 @@ let opn = require('opn');
 import { AddressInfo } from "net";
 import { AddonInterface } from './persistence/models/stremio';
 import { Server } from 'http';
+/**
+ * Module responsible to merge AddonInterface's default router with custom/extended router
+ */
 export class HttpServer {
 	addonInterface: AddonInterface
 	opts: {
