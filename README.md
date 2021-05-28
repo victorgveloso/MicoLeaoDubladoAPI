@@ -2,7 +2,9 @@
 
 ![Mico Leão Dublado Logo](https://i.ibb.co/9tWdHsv/icon.jpg)
 
-[![Node.js CI](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/actions.yml/badge.svg)](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/actions.yml)
+[![Automated tests](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/test.yml/badge.svg)](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/test.yml)
+[![Check test server health](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/healthcheck.yml/badge.svg)](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/healthcheck.yml)
+[![Publish Typedoc to Github Pages](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/docs.yml/badge.svg)](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/docs.yml)
 
 Mico Leão Dublado is...
 
