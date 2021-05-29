@@ -13,6 +13,7 @@ function toStream(meta: IMeta, magnet: SeriesMagnet) {
         season: magnet.season,
         seeders: magnet.seeders,
         title: magnet.title,
+        size: magnet.size,
         type: 'series',
         infoHash,
         sources

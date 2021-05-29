@@ -6,6 +6,7 @@ export interface BaseMagnet {
     seeders: number
     title: string
     magnet: string
+    size?: number
 }
 /**
  * Abstract representation of a content (movie or series)

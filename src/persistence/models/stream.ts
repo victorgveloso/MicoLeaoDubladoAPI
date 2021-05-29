@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
-/* TODO: Add size as attribute of IStream */
 /**
  * Stream describes a multimedia content and how to download/play it.
  * A multimedia title may contains multiple streams associated with it.
@@ -15,6 +14,7 @@ export interface IStream extends Document {
     fileIdx?: number
     episode?: number
     season?: number
+    size?: number
 }
 /**
  * Extract and merge informations from a stream to create its streamId (defined at Stremio Addon SDK documentation)
@@ -68,6 +68,10 @@ export const StreamSchema: Schema = new Schema({
         required: false
     },
     seeders: {
+        type: 'Number',
+        required: false
+    },
+    size: {
         type: 'Number',
         required: false
     }

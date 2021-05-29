@@ -28,6 +28,7 @@ describe("Given a stream stub", ()=>{
                 seeders: stream.seeders,
                 infoHash: stream.infoHash,
                 title: stream.title,
+                size: stream.size,
                 sources,
                 type: stream.type
             })

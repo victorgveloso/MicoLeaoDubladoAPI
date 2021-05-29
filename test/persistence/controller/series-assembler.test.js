@@ -63,5 +63,6 @@ describe('When a series is disassembled', () => {
         expect(stream.episode).toEqual(series.magnets[0].episode);
         expect(stream.fileIdx).toEqual(series.magnets[0].fileIdx);
         expect(stream.seeders).toEqual(series.magnets[0].seeders);
+        expect(stream.size).toEqual(series.magnets[0].size);
     });
 });
