@@ -1,3 +1,6 @@
+/**
+ * Adaptation of the index.d.ts file provided by @types/stremio-addon-sdk for exporting interfaces and types (for reuse)
+ */
 // Type definitions for stremio-addon-sdk 1.6
 // Project: https://github.com/Stremio/stremio-addon-sdk#readme
 // Definitions by: Sleeyax <https://github.com/sleeyax>

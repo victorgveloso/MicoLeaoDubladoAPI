@@ -1,7 +1,9 @@
 import { Schema, model, Model, Document } from 'mongoose';
 import { CatalogSchema, ICatalog } from "./catalog";
 import { ContentType, ShortManifestResource } from './stremio';
-
+/**
+ * Manifest describes the Stremio's Addon general informations.
+ */
 export interface IManifest extends Document {
     id: string
     name: string

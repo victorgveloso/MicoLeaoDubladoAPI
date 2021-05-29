@@ -23,7 +23,11 @@ function toStreamData(movie: MovieDTO): IStream[] {
         };
     });
 }
-
+/**
+ * Data mapper function that transform a received MovieDTO into an object with a meta and many streams
+ * @param series Data Transfer Object for movie content
+ * @returns the movie's metadata and streams
+ */
 export default function disassemble (movie: MovieDTO) {
     return {
         meta: movie.meta,

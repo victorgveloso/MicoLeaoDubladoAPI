@@ -1,5 +1,9 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 /* TODO: Add size as attribute of IStream */
+/**
+ * Stream describes a multimedia content and how to download/play it.
+ * A multimedia title may contains multiple streams associated with it.
+ */
 export interface IStream extends Document {
     metaId: string
     streamId: string
@@ -12,6 +16,11 @@ export interface IStream extends Document {
     episode?: number
     season?: number
 }
+/**
+ * Extract and merge informations from a stream to create its streamId (defined at Stremio Addon SDK documentation)
+ * @param stream a stream of any type (movie or series)
+ * @returns the proper streamId
+ */
 function generateStreamId(stream: IStream): string {
     if (stream.type && stream.type === "series") {
         return `${stream.metaId}:${stream.season}:${stream.episode}`;

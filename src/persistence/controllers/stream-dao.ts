@@ -1,5 +1,7 @@
 import Stream, { IStream } from '../models/stream';
-
+/**
+ * This class abstracts database operations related to the Stream model
+ */
 export default class StreamDao {
     async getByStreamId(streamId: string): Promise<IStream[]> {
         return Stream.find({streamId}).exec();

@@ -1,4 +1,7 @@
 import Meta, { IMeta } from '../models/meta';
+/**
+ * This class abstracts database operations related to the Meta model
+ */
 export default class MetaDAO {
     async getAll(skip=0, limit=100) {
         return Meta.find().skip(skip).limit(limit).exec();

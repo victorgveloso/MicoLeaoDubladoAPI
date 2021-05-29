@@ -1,3 +1,6 @@
+/**
+ * This file defines a Data Transfer Object for series
+ */
 import ContentDTO, { BaseMagnet } from "./content";
 export interface SeriesMagnet extends BaseMagnet {
     episode: number

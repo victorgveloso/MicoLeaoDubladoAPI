@@ -1,4 +1,8 @@
 import Catalog, { ICatalog } from '../models/catalog';
+
+/**
+ * This class abstracts database operations related to the Catalog model
+ */
 export default class CatalogDAO {
     async getAll(): Promise<ICatalog[]>{
         return Catalog.find().exec();

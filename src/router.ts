@@ -24,9 +24,11 @@ export async function upsertContentData({meta, streams}: {
     });
 }
 
-/** 
+/**
  * getRouter is a Proxy to the default getRouter 
  * It includes our custom endpoints
+ * @param addonInterface the addon's main object
+ * @returns the modified router
  */
 export function getRouter(addonInterface: AddonInterface) {
     const router = gerDefaultRouter(addonInterface);

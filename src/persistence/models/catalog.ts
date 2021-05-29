@@ -1,6 +1,8 @@
 import { Schema, model, Model } from 'mongoose';
 import { ContentType } from './stremio';
-
+/**
+ * Catalog is a collection of multimedia of the same type (movie or series)
+ */
 export interface ICatalog {
     id: string
     type: ContentType

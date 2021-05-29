@@ -1,5 +1,8 @@
 import Manifest, { IManifest } from '../models/manifest';
 
+/**
+ * This class abstracts database operations related to the Manifest model
+ */
 export default class ManifestDAO{
     async get(){
         let result: IManifest | null = await Manifest.findOne().exec();

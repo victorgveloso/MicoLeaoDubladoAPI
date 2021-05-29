@@ -1,6 +1,8 @@
 import { Schema, model } from 'mongoose';
 import { ContentType } from './stremio';
-
+/**
+ * Meta represents all metadata related to a multimedia title (movie or series).
+ */
 export interface IMeta {
     id: string
     type: ContentType

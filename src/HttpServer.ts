@@ -35,7 +35,10 @@ export class HttpServer {
 		this.opts = opts;
 		this.app = this.createCachedServer();
 	}
-
+	/**
+	 * Serve all contents and start server
+	 * @returns general informations about the running server
+	 */
 	serve(): Promise<{url: string, server: Server}> {
 		this.serveAPI();
 		this.serveStatic();
@@ -43,6 +46,10 @@ export class HttpServer {
 		return this.start();
 	}
 
+	/**
+	 * Factory method to Express.js app with preconfigured cache headers.
+	 * @returns an Express.js app
+	 */
 	private createCachedServer() : express.Express {
 		if (this.addonInterface.constructor.name !== 'AddonInterface') {
 			throw new Error('first argument must be an instance of AddonInterface');
@@ -63,15 +70,22 @@ export class HttpServer {
 		})
 		return app;
 	}
-	
+	/**
+	 * Add the API endpoints into the express.js app.
+	 */
 	private serveAPI() {
 		this.app.use(this.getRouter());
 	}
 
+	/**
+	 * Extract the custom router from the optional parameters or retrieve the default router.
+	 */
 	private getRouter() {
 		return this.opts.getRouter ? this.opts.getRouter(this.addonInterface) : getDefaultRouter(this.addonInterface);
 	}
-
+	/**
+	 * Add the optional static content to be served by the express.js app.
+	 */
 	private serveStatic() {
 		if (this.opts.static) {
 			const location = path.join(process.cwd(), this.opts.static);
@@ -81,7 +95,9 @@ export class HttpServer {
 			this.app.use(this.opts.static, express.static(location));
 		}
 	}
-
+	/**
+	 * Add the landing page (front-end of the addon website) into the express.js app.
+	 */
 	private serveLandingPage() {
 		const landingHTML = landingTemplate(this.addonInterface.manifest);
 		this.app.get('/', (_, res) => {
@@ -90,7 +106,10 @@ export class HttpServer {
 		});
 
 	}
-
+	/**
+	 * Start the express.js app.
+	 * @returns general information about the running server
+	 */
 	private start() : Promise<{url: string, server: Server}> {
 		const server = this.app.listen(this.opts.port);
 		return new Promise(function (resolve, reject) {

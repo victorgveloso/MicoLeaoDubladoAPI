@@ -31,7 +31,11 @@ function decodeMagnet(magnet: SeriesMagnet) {
 function toStreamCollection(series: SeriesDTO): IStream[] {
     return series.magnets.map((m)=>toStream(series.meta,m));
 }
-
+/**
+ * Data mapper function that transform a received SeriesDTO into an object with a meta and many streams
+ * @param series Data Transfer Object for series content
+ * @returns the series' metadata and streams
+ */
 export default function disassemble(series: SeriesDTO) {
     return {
         meta: series.meta,

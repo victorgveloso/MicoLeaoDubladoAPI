@@ -1,3 +1,7 @@
+/**
+ * This file is the entrypoint for the Mico Leão Dublado API. 
+ * It waits for the database connection and then it starts the server.
+ */
 import {
     connection
 } from 'mongoose';

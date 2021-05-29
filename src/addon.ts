@@ -3,7 +3,11 @@ import StreamDAO from './persistence/controllers/stream-dao';
 import { IMeta } from './persistence/models/meta';
 import { IStream } from './persistence/models/stream';
 import { Args } from './persistence/models/stremio';
-
+/**
+ * Addon's controller for catalog-related requests
+ * @param args Arguments documented at [Stremio's SDK Reference](https://github.com/Stremio/stremio-addon-sdk/blob/master/docs/api/requests/defineCatalogHandler.md)
+ * @returns A list of movies' metadata
+ */
 export async function createCatalogHandler(args: Args): Promise<{ metas: IMeta[] }> {
     let metaDao = new MetaDAO();
     const skip = args.extra!.skip || 0;
@@ -43,6 +47,11 @@ export async function createCatalogHandler(args: Args): Promise<{ metas: IMeta[]
     return result;
 }
 
+/**
+ * Addon's controller for stream-related requests
+ * @param args Arguments documented at [Stremio's SDK Reference](https://github.com/Stremio/stremio-addon-sdk/blob/master/docs/api/requests/defineStreamHandler.md)
+ * @returns A list of streams of movie and series.
+ */
 export async function createStreamHandler(args: Args) : Promise<{ streams: IStream[] }> {
     let streamDao = new StreamDAO();
     let result: { streams: IStream[] } = { streams: [] };
