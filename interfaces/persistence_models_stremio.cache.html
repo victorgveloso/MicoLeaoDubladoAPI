@@ -1,0 +1,315 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Cache | brazilian-stremio-addon</title>
+	<meta name="description" content="Documentation for brazilian-stremio-addon">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">brazilian-stremio-addon</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">brazilian-stremio-addon</a>
+				</li>
+				<li>
+					<a href="../modules/persistence_models_stremio.html">persistence/models/stremio</a>
+				</li>
+				<li>
+					<a href="persistence_models_stremio.cache.html">Cache</a>
+				</li>
+			</ul>
+			<h1>Interface Cache</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A resolving object can also include the following cache related properties</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">Cache</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="persistence_models_stremio.cache.html#cachemaxage" class="tsd-kind-icon">cache<wbr>Max<wbr>Age</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="persistence_models_stremio.cache.html#staleerror" class="tsd-kind-icon">stale<wbr>Error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="persistence_models_stremio.cache.html#stalerevalidate" class="tsd-kind-icon">stale<wbr>Revalidate</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="cachemaxage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cache<wbr>Max<wbr>Age</h3>
+					<div class="tsd-signature tsd-kind-icon">cache<wbr>Max<wbr>Age<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/d7d3aeb/src/persistence/models/stremio.ts#L38">src/persistence/models/stremio.ts:38</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>(in seconds) sets the Cache-Control header to max-age=$cacheMaxAge
+							and overwrites the global cache time set in serveHTTP options.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="staleerror" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stale<wbr>Error</h3>
+					<div class="tsd-signature tsd-kind-icon">stale<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/d7d3aeb/src/persistence/models/stremio.ts#L46">src/persistence/models/stremio.ts:46</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>(in seconds) sets the Cache-Control header to stale-if-error=$staleError.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="stalerevalidate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stale<wbr>Revalidate</h3>
+					<div class="tsd-signature tsd-kind-icon">stale<wbr>Revalidate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/d7d3aeb/src/persistence/models/stremio.ts#L42">src/persistence/models/stremio.ts:42</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>(in seconds) sets the Cache-Control header to stale-while-revalidate=$staleRevalidate.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/httpserver.html">Http<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/addon.html">addon</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/config.html">config</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/index.html">index</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_controllers_catalog_dao.html">persistence/controllers/catalog-<wbr>dao</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_controllers_manifest_dao.html">persistence/controllers/manifest-<wbr>dao</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_controllers_meta_dao.html">persistence/controllers/meta-<wbr>dao</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_controllers_movie_assembler.html">persistence/controllers/movie-<wbr>assembler</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_controllers_series_assembler.html">persistence/controllers/series-<wbr>assembler</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_controllers_stream_dao.html">persistence/controllers/stream-<wbr>dao</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_models_catalog.html">persistence/models/catalog</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_models_manifest.html">persistence/models/manifest</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_models_meta.html">persistence/models/meta</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_models_stream.html">persistence/models/stream</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/persistence_models_stremio.html">persistence/models/stremio</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_models_transfer_objects_content.html">persistence/models/transfer-<wbr>objects/content</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_models_transfer_objects_movie.html">persistence/models/transfer-<wbr>objects/movie</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/persistence_models_transfer_objects_series.html">persistence/models/transfer-<wbr>objects/series</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/router.html">router</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.addoncatalog.html" class="tsd-kind-icon">Addon<wbr>Catalog</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.addoninterface.html" class="tsd-kind-icon">Addon<wbr>Interface</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.args.html" class="tsd-kind-icon">Args</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.cache.html" class="tsd-kind-icon">Cache</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="persistence_models_stremio.cache.html#cachemaxage" class="tsd-kind-icon">cache<wbr>Max<wbr>Age</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="persistence_models_stremio.cache.html#staleerror" class="tsd-kind-icon">stale<wbr>Error</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="persistence_models_stremio.cache.html#stalerevalidate" class="tsd-kind-icon">stale<wbr>Revalidate</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.fullmanifestresource.html" class="tsd-kind-icon">Full<wbr>Manifest<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.manifest.html" class="tsd-kind-icon">Manifest</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.manifestcatalog.html" class="tsd-kind-icon">Manifest<wbr>Catalog</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.manifestextra.html" class="tsd-kind-icon">Manifest<wbr>Extra</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.metadetail.html" class="tsd-kind-icon">Meta<wbr>Detail</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.metalink.html" class="tsd-kind-icon">Meta<wbr>Link</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.metapreview.html" class="tsd-kind-icon">Meta<wbr>Preview</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.metavideo.html" class="tsd-kind-icon">Meta<wbr>Video</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.stream.html" class="tsd-kind-icon">Stream</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="persistence_models_stremio.subtitle.html" class="tsd-kind-icon">Subtitle</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="../modules/persistence_models_stremio.html#contenttype" class="tsd-kind-icon">Content<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="../modules/persistence_models_stremio.html#extra" class="tsd-kind-icon">Extra</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="../modules/persistence_models_stremio.html#shortmanifestresource" class="tsd-kind-icon">Short<wbr>Manifest<wbr>Resource</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
