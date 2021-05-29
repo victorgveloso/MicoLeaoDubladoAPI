@@ -7,7 +7,7 @@
 [![Publish Typedoc to Github Pages](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/docs.yml/badge.svg)](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/docs.yml)
 [![codecov](https://codecov.io/gh/victorgveloso/MicoLeaoDubladoAPI/branch/main/graph/badge.svg?token=YZPBWPGXRM)](https://codecov.io/gh/victorgveloso/MicoLeaoDubladoAPI)
 
-Mico Leão Dublado is a stateful service for multimedia's torrent magnet storage. Relying on MongoDB the magnets are stored in accordance with the Stremio's standards. Adding and searching content is straightforward and it is described further at [Section Using](#using)
+Mico Leão Dublado is a stateful service for multimedia's torrent magnet storage. Relying on MongoDB the magnets are stored in accordance with the Stremio's standards. Adding and searching content is straightforward and it is described further at [Section Using](#using).
 
 This project adheres to the Contributor Covenant
 [code of conduct](https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/master/CODE_OF_CONDUCT.md).
@@ -45,6 +45,10 @@ Mico Leão Dublado API is a HTTP API (use an HTTP client of your choice).
 ## Contributing
 
 If you are interested in reporting/fixing issues and contributing directly to the code base, please see [CONTRIBUTING.md](https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/master/CONTRIBUTING.md) for more information on what we're looking for and how to get started.
+
+## Reference
+
+You might be interested in the Mico Leão Dublados API's reference documentation. It is hosted using Github Pages and it is [available here](https://victorgveloso.github.io/MicoLeaoDubladoAPI/).
 
 ## Community
 
