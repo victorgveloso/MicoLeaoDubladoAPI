@@ -10,22 +10,45 @@ The following is a set of guidelines for contributing to Mico Leão Dublado.
 These are just guidelines, not rules, use your best judgment and feel free to
 propose changes to this document in a pull request.
 
-* [How to Contribute in Issues](https://github.com/victorgveloso/MicoLeaoDubladoAPI#issues)
+* [How to Contribute in Issues](#issues)
 * Asking for General Help? Ask on [r/StremioAddons](https://reddit.com/r/StremioAddons/) or on [Discord](https://discord.gg/WTqVGKXh)
 * Do you miss a movie (or any other content) on a Mico Leão Dublado API server? **Wrong place! This is a project focused on DEVELOPING Mico Leão Dublado.** There is no Mico Leão Dublado official public server. We only host instances of Mico Leão Dublado API for testing purpose only!
 </br><img src="https://i.imgur.com/RUdPyQPh.jpg" alt="drawing" width="200"/>
 
-* [Reporting a Bug](https://github.com/victorgveloso/MicoLeaoDubladoAPI#how-to-report-bugs)
-* [Submitting a Feature Request](https://github.com/victorgveloso/MicoLeaoDubladoAPI#how-to-submit-a-feature-request)
-* [Submitting a Pull Request](https://github.com/victorgveloso/MicoLeaoDubladoAPI#pull-request) (Please read [our license terms](https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/LICENSE) before contributing!)
+* [Reporting a Bug](#how-to-report-bugs)
+* [Submitting a Feature Request](#how-to-submit-a-feature-request)
+* [Submitting a Pull Request](#pull-request) (Please read [our license terms](https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/main/LICENSE) before contributing!)
 
 ## [Issues](https://github.com/victorgveloso/MicoLeaoDubladoAPI/issues)
 
-Issues are created [here](https://github.com/victorgveloso/MicoLeaoDubladoAPI/issues).
+Issues are created [here](https://github.com/victorgveloso/MicoLeaoDubladoAPI/issues). Alternatively, you can select the Issue Tab highlighted in the image below.
+![IssueTab](./assets/IssueTab.png)
 
 ### How to report bugs?
+  
+  1. Press the "New Issue" Button:
+     * ![NewIssueButton](./assets/NewIssueButton.png)
+  1. Select Bug Report:
+     * ![BugReport](./assets/BugReport.png)
+  1. Follow the instructions on the Bug Report Template. Remember: 
+     * to choose a descriptive title
+     * to be concise
+     * to replace only the highlighted text in the image below:
+     
+     ![BugReport](./assets/ReportingBug.png)
 
 ### How to submit a Feature Request?
+  
+  1. Press the "New Issue" Button:
+     * ![NewIssueButton](./assets/NewIssueButton.png)
+  1. Select Feature Request:
+     * ![FeatureRequest](./assets/FeatureRequest.png)
+  1. Follow the instructions on the Feature Request Template. Remember: 
+     * choose a descriptive title
+     * be concise
+     * replace only the highlighted text in the image below:
+     
+     ![RequestingFeature](./assets/RequestingFeature.png)
 
 ### Languages
 
@@ -42,7 +65,7 @@ Responses to posted issues may or may not be in the original language.
 Pull Requests are the way concrete changes are made to the code and documentation
 in this repository.
 
-* [Setting up your local environment](https://electronjs.org/docs/development/pull-requests#setting-up-your-local-environment)
+* [Setting up your local environment](#setting-up-your-local-environment)
   * Step 0: (If you are using Windows) Install [WSL 2](https://docs.microsoft.com/pt-br/windows/wsl/install-win10)
   * Step 1: Fork it!
   * Step 2: Inside WSL 2 or a Linux distribution install... Required: [node.js](https://nodejs.org/en/download/package-manager/). Recommended: [pip](https://packaging.python.org/guides/installing-using-linux-tools/), [docker](https://docs.docker.com/engine/install/), docker-compose (`pip install docker-compose`), and a text editor (recommended: [Visual Studio Code](https://code.visualstudio.com/))
@@ -79,7 +102,7 @@ in this repository.
 * Making Changes
   * Step 4: Create a **Feature branch.** It should be prefixed by `feature/` (e.g. `feature/new-ui`)
   * Step 5a: Write tests using JavaScript and Jest.
-  * Step 5b: Write source code (important: follow our [Style Guides](https://github.com/victorgveloso/MicoLeaoDubladoAPI#style-guides))
+  * Step 5b: Write source code (important: follow our [Style Guides](#style-guides))
   * Step 6a: Run tests
   * Step 6b: Commit (english-only!)
   * Step 7: Rebase

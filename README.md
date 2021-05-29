@@ -1,13 +1,13 @@
 # Mico Leão Dublado **API**
 
-![Mico Leão Dublado Logo](https://i.ibb.co/9tWdHsv/icon.jpg)
+![Mico Leão Dublado Logo](./assets/logo.jpg)
 
 [![Automated tests](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/test.yml/badge.svg)](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/test.yml)
 [![Check test server health](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/healthcheck.yml/badge.svg)](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/healthcheck.yml)
 [![Publish Typedoc to Github Pages](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/docs.yml/badge.svg)](https://github.com/victorgveloso/MicoLeaoDubladoAPI/actions/workflows/docs.yml)
 [![codecov](https://codecov.io/gh/victorgveloso/MicoLeaoDubladoAPI/branch/main/graph/badge.svg?token=YZPBWPGXRM)](https://codecov.io/gh/victorgveloso/MicoLeaoDubladoAPI)
 
-Mico Leão Dublado is...
+Mico Leão Dublado is a stateful service for multimedia's torrent magnet storage. Relying on MongoDB the magnets are stored in accordance with the Stremio's standards. Adding and searching content is straightforward and it is described further at [Section Using](#using)
 
 This project adheres to the Contributor Covenant
 [code of conduct](https://github.com/victorgveloso/MicoLeaoDubladoAPI/blob/master/CODE_OF_CONDUCT.md).
